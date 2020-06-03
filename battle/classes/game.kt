@@ -4,7 +4,17 @@ package battle.classes
  * Created by Devansh on 01-06-2020
  */
 
-open class Person(name: String = "", hp: Int = 0, mp:Int = 0, atk: Int = 0, defence: Int = 0, magic: Array<Spell>){
+open class Colors{
+
+    var ANSI_RESET  = "\u001B[0m";
+
+    var ANSI_BRIGHT_RED    = "\u001B[91m"
+    var ANSI_BRIGHT_GREEN  = "\u001B[92m";
+    var ANSI_BRIGHT_BLUE   = "\u001B[94m";
+
+}
+
+open class Person(name: String = "", hp: Int = 0, mp:Int = 0, atk: Int = 0, defence: Int = 0, magic: Array<Spell>): Colors(){
     var maxmp: Int = mp
     var mp: Int = mp
     var maxhp: Int = hp
@@ -106,12 +116,14 @@ open class Person(name: String = "", hp: Int = 0, mp:Int = 0, atk: Int = 0, defe
             currhp=hpstr
 
         print("\n                         __________________________________________________\n")
-        print("${name}\t     ${currhp}|")
+        print("${name}\t     ${currhp}|" + ANSI_BRIGHT_RED)
 
         for (i in 0 until hpval)
             print("█")
         for (i in 0..(49-hpval))
             print(" ")
+
+        print(ANSI_RESET)
 
         print("| ")
     }
@@ -150,23 +162,21 @@ open class Person(name: String = "", hp: Int = 0, mp:Int = 0, atk: Int = 0, defe
             currmp = mpstr
 
         print("\n                         __________________________             ___________\n")
-        print("${name}        ${currhp}|")
+        print("${name}        ${currhp}|" + ANSI_BRIGHT_GREEN)
         for(i in 0..hpval)
             print("█")
         for(i in 0..(24 - hpval))
             print(" ")
 
-        print("|    $currmp|")
+        print(ANSI_RESET)
+        print("|    $currmp|$ANSI_BRIGHT_BLUE")
 
         for(i in 0..mpval)
             print("█")
         for(i in 0..(9 - mpval))
             print(" ")
 
+        print(ANSI_RESET)
         print( "|")
-
     }
-
-
-
 }
